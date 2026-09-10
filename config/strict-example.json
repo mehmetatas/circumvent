@@ -1,0 +1,18 @@
+{
+  "defaults": {
+    "account": {
+      "requests": 20,
+      "windowSeconds": 60
+    },
+    "endpoints": {
+      "/v1/widgets": {
+        "requests": 5,
+        "windowSeconds": 60
+      },
+      "/v1/reports": {
+        "requests": 2,
+        "windowSeconds": 60
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "api-traffic-report",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CLI that analyzes a JSONL HTTP request log and reports traffic and rate-limit violations.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "scripts": {
+    "analyze": "tsx src/index.ts",
+    "verify": "npm run lint && npm run typecheck && npm test",
+    "lint": "biome check . && jscpd src test",
+    "lint:fix": "biome check --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.12",
+    "@jest/globals": "^30.5.1",
+    "@types/node": "^22.10.2",
+    "jest": "^30.5.1",
+    "jscpd": "^5.2.0",
+    "ts-jest": "^29.4.12",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "jest": {
+    "preset": "ts-jest/presets/default-esm",
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/index.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 95,
+        "branches": 95,
+        "functions": 95,
+        "lines": 95
+      }
+    },
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ]
+  }
+}

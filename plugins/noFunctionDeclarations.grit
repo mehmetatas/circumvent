@@ -1,0 +1,8 @@
+language js
+
+function_declaration() as $fn where {
+  register_diagnostic(
+    span = $fn,
+    message = "Use an arrow function instead of a `function` declaration: `const name = () => {}`. Biome's useArrowFunction rule only covers function expressions, so this plugin covers declarations."
+  )
+}
